@@ -75,6 +75,7 @@ It is adviced to reference the template mod for this port. Regardless here are s
 | Obj_arg2 | Unknown. |
 | RotateSpeed | Negative values make the gears rotate clockwise. |
 | RotateAxis | 0 = X-axis, 1 = Y-axis, 2 = Z-axis. |
+
 The MapPart parameters might be identical to RotateMoveObj.
 
 ### TripodBossKillerGenerater / TripodBossUnderKillerCannon / TripodBossUpperKillerCannon / TripodBossBottomKillerCannon
