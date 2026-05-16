@@ -10,7 +10,7 @@
 #include "Game/Util/ActorMovementUtil.h"
 #include "Game/Util/JMapUtil.h"
 #include "Game/Util/MtxUtil.h"
-#include "Game/Util/LiveActorUtil.h"
+#include "Game/Util/ModelUtil.h"
 
 TripodBossFixPartsBase::TripodBossFixPartsBase(const char *pName) : LiveActor(pName) {
     _BC.x = 0.0f;
