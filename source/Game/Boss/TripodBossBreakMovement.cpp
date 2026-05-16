@@ -5,6 +5,7 @@
 #include "Game/Util/ActorMovementUtil.h"
 #include "Game/Util/GravityUtil.h"
 #include "Game/Util/MathUtil.h"
+#include "Game/Util/MtxUtil.h"
 
 namespace NrvTripodBossBreakMovement {
     void TripodBossBreakMovementNrvWait::execute(Spine* pSpine) const {
@@ -118,9 +119,32 @@ void TripodBossBreakMovement::exeStartBreak() {
     }
 }
 
+namespace {
+    void rotateMtxMoment(TPos3f* pDst, const TPos3f& rSrc, const TVec3f& rMoment) {
+        if (rMoment.isZero()) {
+            *pDst = rSrc;
+        }
+        else {
+            TVec3f dir(rMoment);
+            f32 mag;
+            MR::separateScalarAndDirection(&mag, &dir, dir);
+
+            TVec3f trans;
+            rSrc.getTrans(trans);
+
+            TPos3f rotMtx;
+            rotMtx.makeRotate(dir, mag);
+            rotMtx.concat(rotMtx, rSrc);
+            MR::orthogonalize(&rotMtx);
+            rotMtx.setTrans(trans);
+            *pDst = rotMtx;
+        }
+    }
+}
+
 /* more stack issues */
 void TripodBossBreakMovement::exeBreak() {
-    //MR::rotateMtxMoment(&_8C, _8C, _CC); // TODO: Figure this out...
+    rotateMtxMoment(&_8C, _8C, _CC);
     if (MR::isFirstStep(this)) {
         _8C.getTrans(_C0);
         f32 val = _F4;
