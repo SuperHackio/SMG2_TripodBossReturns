@@ -82,8 +82,8 @@ TripodBossAccesser* TripodBossAccesser::createSceneObj() {
 namespace MR {
     NameObjGroup* findGroupFromName_Replica(MovementOnOffGroupHolder* pHolder, const char* pName) {
         for (u32 i = 0; i < pHolder->mGroups.mCount; i++)
-            if (MR::isEqualString(pHolder->mGroups.mArray.mArr[i]->mName, pName))
-                return pHolder->mGroups.mArray.mArr[i];
+            if (MR::isEqualString(pHolder->mGroups.mArray[i]->mName, pName))
+                return pHolder->mGroups.mArray[i];
         return NULL;
     }
 
