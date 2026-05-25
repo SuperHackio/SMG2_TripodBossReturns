@@ -170,6 +170,7 @@ public:
     u8 _640;
     ActorCameraInfo* mEventCamera;              // 0x644
     s32 mCageContents; // NEW to SMG2 (ObjArg0)
+    f32 mLowDistance; // NEW to SMG2 (ObjArg3)
     bool mNoMusicChange; // NEW to SMG2 (ObjArg1)
     bool mSkipIntro; // NEW to SMG2 (ObjArg2)
 };

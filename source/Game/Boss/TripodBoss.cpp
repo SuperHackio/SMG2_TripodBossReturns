@@ -159,6 +159,7 @@ TripodBoss::TripodBoss(const char *pName) : LiveActor(pName), mLowModel(NULL), m
     _62C = 32;
 
     mCageContents = 13;
+    mLowDistance = 34000.0f;
     mNoMusicChange = false;
     mSkipIntro = false;
 }
@@ -188,7 +189,7 @@ void TripodBoss::init(const JMapInfoIter &rIter) {
     initEventCamera(rIter);
     initSound(8, false, NULL, TVec3f(0.0f));
     initEffectKeeper(0, "TripodBoss", false);
-    MR::setEffectHostMtx(this, "BreakLight", (MtxPtr)&mBodyMtx);
+    MR::setEffectHostMtx(this, "BreakLight", mBodyMtx.toMtxPtr());
     initNerve(&NrvTripodBoss::TripodBossNrvNonActive::sInstance, 0);
     MR::invalidateClipping(this);
     MR::needStageSwitchReadA(this, rIter);
@@ -202,6 +203,7 @@ void TripodBoss::init(const JMapInfoIter &rIter) {
         MR::declarePowerStar(this);
     MR::getJMapInfoArg1NoInit(rIter, &mNoMusicChange);
     MR::getJMapInfoArg2NoInit(rIter, &mSkipIntro);
+    MR::getJMapInfoArg3NoInit(rIter, &mLowDistance);
     JMath::gekko_ps_copy12(&_BC, &mBodyMtx);
     MR::addTransMtxLocal((MtxPtr) & _BC, _5BC);
 
@@ -1111,7 +1113,7 @@ void TripodBoss::clippingModel() {
             _638 = 1;
         }
     }
-    else if (MR::calcCameraDistanceZ(_5EC) < 34000.0f) {
+    else if (MR::calcCameraDistanceZ(_5EC) < mLowDistance) {
         if (!MR::isDead(mLowModel)) {
             mLowModel->makeActorDead();
         }
