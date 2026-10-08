@@ -2,6 +2,7 @@
 #include "Game/Util/MathUtil.h"
 #include "JSystem/JGeometry/TVec.h"
 
+#include "JSystem/JMath.h"
 #include "JSystem/JGeometry/TUtil.h"
 
 
