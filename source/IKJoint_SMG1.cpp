@@ -2,6 +2,7 @@
 
 #include "Game/Util/MathUtil.h"
 #include "Game/Util/MtxUtil.h"
+#include "JSystem/JMath.h"
 
 namespace IKJoint_SMG1 {
     void setRootBoneLength(IKJoint* ikjnt, f32 boneLength) {
